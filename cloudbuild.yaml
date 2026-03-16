@@ -7,6 +7,12 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'  
     args: ['push', 'gcr.io/$PROJECT_ID/gcpdevops-dev/$SHORT_SHA']
 
+  - name: change image tag in gke.yml
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        sed -i "s|gcr.io/my-devops-practice/gcpdevops-dev:*|gcr.io/$PROJECT_ID/gcpdevops-dev:$SHORT_SHA|g" gke.yml
   #deploy to GKE  
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
