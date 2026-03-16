@@ -15,7 +15,7 @@ steps:
         sed -i "s|us-east1-docker.pkg.dev/.*|us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA|g" gke.yml
   
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'ubuntu'
+    entrypoint: 'sh'
     args:
       - '-c'
       - |
