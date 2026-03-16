@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gcp-devops-gke
-        image: us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/29b316b
+        image: us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/8a7e445
         ports:
         - containerPort: 5000
         env:
