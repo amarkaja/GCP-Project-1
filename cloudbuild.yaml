@@ -18,7 +18,7 @@ steps:
         git config --global user.name "Cloud Build"
         git add gke.yml
         git commit -m "Update image tag in gke.yml to $SHORT_SHA"
-        git push https://amarkaja:$$GH_TOKEN@github.com/amarkaja/GCP-Project-1.git main
+        git push https://amarkaja:$$GH_TOKEN@github.com/amarkaja/GCP-Project-1.git HEAD:main
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
