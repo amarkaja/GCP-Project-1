@@ -1,18 +1,18 @@
 steps:
   #build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpdevops-dev/$SHORT_SHA', '.']
+    args: ['build', '-t', 'us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA', '.']
 
   #push the container image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'  
-    args: ['push', 'gcr.io/$PROJECT_ID/gcpdevops-dev/$SHORT_SHA']
+    args: ['push', 'us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA']
 
-  - name: 'change image tag in gke.yml'
+  - name: 'ubuntu'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        sed -i "s|gcr.io/my-devops-practice/gcpdevops-dev:*|gcr.io/$PROJECT_ID/gcpdevops-dev:$SHORT_SHA|g" gke.yml
+        sed -i "s|us-east1-docker.pkg.dev/.*|us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA|g" gke.yml
   #deploy to GKE  
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
