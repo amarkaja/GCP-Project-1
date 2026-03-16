@@ -1,11 +1,11 @@
 steps:
   #build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpdevops', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpdevops-dev', '.']
 
   #push the container image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'  
-    args: ['push', 'gcr.io/$PROJECT_ID/gcpdevops']
+    args: ['push', 'gcr.io/$PROJECT_ID/gcpdevops-dev']
 
   #deploy to GKE  
   - name: 'gcr.io/cloud-builders/gke-deploy'
@@ -14,8 +14,8 @@ steps:
       - '--filename=./gke.yml'
       - '--location=us-central1-a'
       - '--cluster=gcp-devops-project'
-      - '--image=gcr.io/$PROJECT_ID/gcpdevops'
-      - '--namespace=gcp-devops-prod'
+      - '--image=gcr.io/$PROJECT_ID/gcpdevops-dev'
+      - '--namespace=gcp-devops-dev'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
