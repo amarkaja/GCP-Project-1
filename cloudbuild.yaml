@@ -14,7 +14,7 @@ steps:
       - |
         sed -i "s|us-east1-docker.pkg.dev/.*|us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA|g" gke.yml
         git config --global user.email "amar.iiitn224@gmail.com"
-        git config --global user.name "CloudBuild"
+        git config --global user.name "AmarKaja"
         git add gke.yml
         git commit -m "Update image tag in gke.yml to $SHORT_SHA"
         git push origin HEAD:main  
