@@ -9,6 +9,7 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
+    secretEnv: ['GH_TOKEN']
     args:
       - '-c'
       - |
@@ -17,7 +18,7 @@ steps:
         git config --global user.name "Cloud Build"
         git add gke.yml
         git commit -m "Update image tag in gke.yml to $SHORT_SHA"
-        git push https://amarkaja:${gcp_projects-pat}@github.com/amarkaja/GCP-Project-1.git main
+        git push https://amarkaja:$$GH_TOKEN@github.com/amarkaja/GCP-Project-1.git main
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
@@ -25,5 +26,5 @@ options:
 availableSecrets:
   secretManager:
     - versionName: "projects/my-devops-practice-490010/secrets/gcp_projects-pat/versions/latest"
-      env: 'gcp_projects-pat'
+      env: 'GH_TOKEN'
 
