@@ -13,17 +13,12 @@ steps:
       - '-c'
       - |
         sed -i "s|us-east1-docker.pkg.dev/.*|us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA|g" gke.yml
-  
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'sh'
-    args:
-      - '-c'
-      - |
         git config --global user.email "cloudbuild@gserviceaccount.com"
-        git config --global user.name "Cloud Build"
+        git config --global user.name "CloudBuild"
+        git checkout main
         git add gke.yml
         git commit -m "Update image tag in gke.yml to $SHORT_SHA"
-        git push origin HEAD:main
+        git push origin HEAD:main  
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
