@@ -7,7 +7,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'  
     args: ['push', 'us-east1-docker.pkg.dev/my-devops-practice-490010/gcpdevops-dev/$SHORT_SHA']
 
-  - name: 'ubuntu'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
