@@ -17,7 +17,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'ubuntu'
     args:
-      - 'c'
+      - '-c'
       - |
         git config --global user.email "cloudbuild@gserviceaccount.com"
         git config --global user.name "Cloud Build"
